@@ -1,2 +1,2 @@
-# HW9-SQL
+# HW6-SQL
 
