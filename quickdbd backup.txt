@@ -1,0 +1,50 @@
+# Modify this code to update the DB schema diagram.
+# To reset the sample schema, replace everything with
+# two dots ('..' - without quotes).
+
+salaries 
+---- 
+emp_no int pk fk - employees.emp_no
+salry int 
+from_date date
+to_date date
+
+
+# We can't just use employee number as the primary key because there are duplicates. Additionally, we cannot just use title 
+# as the composite key as there are duplicates of those combinations as well. 
+titles 
+----
+emp_no int pk fk - employees.emp_no
+title varchar pk
+from_date date pk
+to_date date 
+
+# Again, we can't use only employee number as the primary key. Using a composite key of emp_no and dept_no works.
+# Department number is alpha-numeric so it has to be varchar
+dept_emp
+----
+emp_no int pk fk - employees.emp_no
+dept_no varchar pk fk - departments.dept_no
+from_date date
+to_date date
+
+dept_man
+----
+dept_no varchar fk - departments.dept_no
+emp_no int pk fk - employees.emp_no
+from_date date
+to_date date 
+
+employees
+----
+emp_no int pk
+birth_date date
+first_name varchar
+last_name varchar
+gender char(1)
+hire_date date
+
+departments 
+----
+dept_no varchar pk
+dept_name varchar
